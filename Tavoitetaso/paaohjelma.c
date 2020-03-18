@@ -19,7 +19,8 @@ int main(void){
   char tiedostoNimi[KOKO];
   char tilaNimi[KOKO];
   char pvm[KOKO];
-  Solmu *pAlku, *pAlkuKaytto = NULL;
+  Solmu *pAlku = NULL;
+  Solmu *pAlkuKaytto = NULL;
   printf("Tämä ohjelma analysoi tilan käyttö -tiedostoja.\n");
   do{
     printf("\n");
@@ -36,14 +37,12 @@ int main(void){
     scanf("%d", &nValinta);
     switch (nValinta){
       case 1:
-        printf("Anna luettavan tiedoston nimi: ");
-        scanf("%s", tiedostoNimi);
-        pAlku = lueTiedot(tiedostoNimi);
+        kysyTiedostonimi(tiedostoNimi);
+        pAlku = lueTiedot(tiedostoNimi, pAlku);
         break;
       case 2:
         if (pAlku != NULL){
-          printf("Anna opetustilan nimi: ");
-          scanf("%s", tilaNimi);
+          kysyTilanimi(tilaNimi);
           tallenna(pAlku, tilaNimi);
         } else {
           printf("Ei tallennettavaa, lue ensin käyttötiedosto.\n");
@@ -51,8 +50,7 @@ int main(void){
         break;
       case 3:
         if (pAlku != NULL){
-          printf("Anna opetustilan nimi: ");
-          scanf("%s", tilaNimi);
+          kysyTilanimi(tilaNimi);
           analysoi(pAlku, tilaNimi);
         } else {
           printf("Ei analysoitavaa, lue ensin käyttötiedosto.\n");
@@ -60,10 +58,9 @@ int main(void){
         break;
       case 4:
         if (pAlku != NULL){
-          printf("Anna opetustilan nimi: ");
-          scanf("%s", tilaNimi);
-          printf("Anna päivämäärä (päivä.kuukausi.vuosi): ");
-          scanf("%s", pvm);
+          kysyTilanimi(tilaNimi);
+          kysyPvm(pvm);
+          pAlkuKaytto = tyhjenna(pAlkuKaytto);
           pAlkuKaytto = analysoiKaytto(pAlku, tilaNimi, pvm);
           if(pAlkuKaytto != NULL){
             printf("Aikavälianalyysi valmis.\n");

@@ -153,7 +153,24 @@ void analysoi(Solmu *pA, char *tilaNimi){
   }
   printf("Opetustilan %s käyttöanalyysi, %d alkiota:\n",tilaNimi, rivit);
   printf("  Avg  Min  Max\n");
-  printf("%5d%5d%5d\n", sum/rivit, min, max);
+  if(sum != 0 && rivit != 0){
+    printf("%5d%5d%5d\n", sum/rivit, min, max);
+  }  
+}
+
+void kysyTiedostonimi(char *tiedostoNimi){
+  printf("Anna luettavan tiedoston nimi: ");
+  scanf("%s", tiedostoNimi);
+}
+
+void kysyTilanimi(char *tilaNimi){
+  printf("Anna opetustilan nimi: ");
+  scanf("%s", tilaNimi);
+}
+
+void kysyPvm(char *pvm){
+  printf("Anna päivämäärä (päivä.kuukausi.vuosi): ");
+  scanf("%s", pvm);
 }
 /*******************************************************************/
 /* eof */

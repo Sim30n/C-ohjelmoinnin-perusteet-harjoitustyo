@@ -17,5 +17,8 @@ Solmu *tyhjenna(Solmu *pA);
 Solmu *analysoiKaytto(Solmu *pA, char *tilaNimi, char *pvm);
 void analysoi(Solmu *pA, char *tilaNimi);
 void tulosta(Solmu *pA);
+void kysyTiedostonimi(char *tiedostoNimi);
+void kysyTilanimi(char *tilaNimi);
+void kysyPvm(char *pvm);
 /*******************************************************************/
 /* eof */

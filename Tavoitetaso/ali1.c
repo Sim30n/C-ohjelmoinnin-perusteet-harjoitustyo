@@ -15,14 +15,18 @@
 #include "ali2.h"
 
 // luetaan tiedot annetusta tiedostosta ja lisätään luodaan linkitetty lista
-Solmu *lueTiedot(char *tiedostoNimi){
+Solmu *lueTiedot(char *tiedostoNimi, Solmu *pAlku){
+  if(pAlku != NULL){
+    tyhjenna(pAlku);
+  }
+  pAlku = NULL;
   int rivit = 0;
   int epochAika; int paiva; int kuukausi; int vuosi; int tunti;
   int minuutti; int maara;
   int maksimit[LISTANKOKO]= {0,0,0,0,0,0,0,0,0,0,0,0};
-  Solmu *pAlku = NULL;
   FILE* tiedosto;
-  char rivi[LEN], *tila;
+  char rivi[LEN];
+  char *tila;
   printf("Luetaan tiedosto '%s'\n", tiedostoNimi);
   if((tiedosto = fopen(tiedostoNimi, "r"))==NULL){
     perror("Tiedoston lukeminen epäonnistui");

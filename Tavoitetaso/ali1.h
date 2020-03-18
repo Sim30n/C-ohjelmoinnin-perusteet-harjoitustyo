@@ -26,7 +26,7 @@ struct Node{
 };
 typedef struct Node Solmu;
 
-Solmu* lueTiedot(char *tiedostoNimi);
+Solmu* lueTiedot(char *tiedostoNimi, Solmu *pAlku);
 void tallenna(Solmu *pA, char *tilaNimi);
 void tallennaTulosTiedot(Solmu *pA);
 /*******************************************************************/
